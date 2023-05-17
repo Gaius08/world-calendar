@@ -1,8 +1,7 @@
 <template>
     <div class="pa-2">
-        <v-autocomplete clearable class="pa-4 w-25" chips label="Select a country" :items="countries"
-             v-model="countryName" item-title="name"
-        item-value="code" variant="solo-filled"></v-autocomplete>
+        <v-autocomplete clearable class="pa-4 w-25" chips label="Select a country" :items="countries" v-model="countryName"
+            item-title="name" item-value="code" variant="solo"></v-autocomplete>
     </div>
     <div>
         <VCalendar borderless :attributes="attrs" class="w-25 my-calendar" :active-date="activeDate" />
@@ -36,11 +35,6 @@ export default {
     mounted() {
         this.selectCountry();
     },
-    computed: {
-        activeDate() {
-            return this.selectedDate || new Date();
-        },
-    },
     methods: {
         selectCountry() {
             axiosInstance
@@ -48,9 +42,9 @@ export default {
                 .then((response) => {
                     console.log("Response from server:", response.data);
                     response.data.map((country) => (
-                        this.countries.push({name: country.name, code: country.countryCode})
+                        this.countries.push({ name: country.name, code: country.countryCode })
                     ));
-                    console.log("this.countries",this.countries)
+                    console.log("this.countries", this.countries)
                 })
                 .catch((error) => {
                     console.log("Error from server:", error);
@@ -58,17 +52,14 @@ export default {
         },
         printCurrentYear() {
             const currentYear = new Date(this.activeDate).getFullYear();
-            this.refs.calendar = currentYear
-            console.log(calendar);
+            console.log(currentYear);
         },
     },
 };
 </script>
-  
 <style>
 .my-calendar .vc-weekday-1,
 .my-calendar .vc-weekday-7 {
     color: red;
 }
 </style>
-  
