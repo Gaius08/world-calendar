@@ -8,7 +8,6 @@
     </div>
     <h1>{{ countryName }}</h1>
 </template>
-  
 <script>
 import axiosInstance from "../services/service.js";
 
@@ -27,7 +26,6 @@ export default {
                         backgroundColor: "#ff8080",
                         content: "red",
                         highlight: "#E7F0FA5",
-
                         // popover: { ... },
                         // customData: { ... },
                     },
@@ -36,11 +34,9 @@ export default {
             ],
         };
     },
-
     mounted() {
         this.selectCountry();
     },
-
     methods: {
         selectCountry() {
             axiosInstance
@@ -56,7 +52,6 @@ export default {
     },
 };
 </script>
-  
 <style>
 .my-calendar .vc-weekday-1,
 .my-calendar .vc-weekday-7 {
